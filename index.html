@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UD3 Chasis y placa base – Guía de estudio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fa;--sf:#fff;--s2:#eaeef2;--bd:#d0d7de;--ac:#0969da;--p:#6f42c1;--gr:#1a7f37;--rd:#cf222e;--yl:#9a6700;--tx:#1f2328;--mu:#59636e;--okb:#dafbe1;--kob:#ffebe9;--db:#ddf4ff;--wb:#fff8c5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0d1117;--sf:#161b22;--s2:#1e2633;--bd:#30363d;--ac:#58a6ff;--p:#7c3aed;--gr:#3fb950;--rd:#f85149;--yl:#d29922;--tx:#e6edf3;--mu:#8b949e;--okb:#0c2d1a;--kob:#2d0c0c;--db:#0c1929;--wb:#2a2108}}
+:root[data-theme=dark]{--bg:#0d1117;--sf:#161b22;--s2:#1e2633;--bd:#30363d;--ac:#58a6ff;--p:#7c3aed;--gr:#3fb950;--rd:#f85149;--yl:#d29922;--tx:#e6edf3;--mu:#8b949e;--okb:#0c2d1a;--kob:#2d0c0c;--db:#0c1929;--wb:#2a2108}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(56px + env(safe-area-inset-top,0px));background:var(--bg)}
+body{background:var(--bg);color:var(--tx);font:15px/1.65 Inter,system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--bd);padding:.5rem 1rem;display:flex;gap:.3rem;flex-wrap:wrap}
+nav a{color:var(--mu);text-decoration:none;font-size:12px;font-weight:500;padding:4px 9px;border-radius:6px}nav a:hover,nav a:focus-visible{background:var(--s2);color:var(--ac)}
+.hero{max-width:860px;margin:0 auto;padding:2.5rem 1.25rem 1rem}
+.hero h1{font:700 clamp(1.7rem,5vw,2.6rem)/1.15 'Space Grotesk',system-ui,sans-serif;margin-bottom:.6rem}.hero p{color:var(--mu);max-width:580px}
+.c{max-width:860px;margin:0 auto;padding:0 1.25rem 4rem}
+.st{font:700 1.1rem 'Space Grotesk',system-ui,sans-serif;color:var(--ac);display:flex;align-items:center;gap:.5rem;padding:2rem 0 .7rem;border-bottom:1px solid var(--bd);margin-bottom:1rem}
+.n{background:var(--p);color:#fff;min-width:22px;height:22px;border-radius:6px;font-size:11px;display:flex;align-items:center;justify-content:center}
+.cd{background:var(--sf);border:1px solid var(--bd);border-radius:10px;margin-bottom:.7rem;overflow:hidden}
+.ch{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;gap:.7rem;width:100%;padding:.85rem 1rem;cursor:pointer;font-weight:600;font-size:.92rem}.ch:focus-visible{outline:2px solid var(--ac);outline-offset:-2px}
+.ch i{font-style:normal;color:var(--mu);transition:transform .2s}.ch[aria-expanded=true] i{transform:rotate(90deg)}
+.cb{display:none;padding:0 1rem 1rem}.cb.on{display:block}
+.ll{list-style:none}.ll li{position:relative;padding:.35rem 0 .35rem 1.1rem;font-size:.88rem;border-bottom:1px solid var(--bd)}.ll li:last-child{border:0}.ll li:before{content:"›";position:absolute;left:0;color:var(--ac);font-weight:700}
+.def,.warn{border-radius:0 8px 8px 0;padding:.7rem 1rem;margin:.7rem 0;font-size:.86rem}.def{background:var(--db);border-left:3px solid var(--ac)}.warn{background:var(--wb);border-left:3px solid var(--yl)}
+.tw{overflow-x:auto}.tbl{width:100%;border-collapse:collapse;font-size:.82rem;margin:.7rem 0}.tbl th{background:var(--s2);color:var(--ac);padding:.45rem .7rem;text-align:left}.tbl td{padding:.4rem .7rem;border-bottom:1px solid var(--bd);vertical-align:top}
+.ex{font:.82rem/1.5 ui-monospace,Consolas,monospace;background:var(--s2);border-radius:6px;padding:.6rem .8rem;margin:.6rem 0;overflow-x:auto;white-space:pre}
+.bar{background:var(--s2);border-radius:4px;height:6px;min-width:200px;margin-bottom:.3rem}.bar div{background:var(--p);height:6px;border-radius:4px;transition:width .3s;width:0}
+.mu{font-size:12px;color:var(--mu)}
+.btn{background:var(--p);color:#fff;border:0;border-radius:8px;padding:.5rem 1rem;font:600 .85rem Inter,system-ui,sans-serif;cursor:pointer}.btn:hover{opacity:.85}
+.gh{background:transparent;border:1px solid var(--bd);color:var(--mu);border-radius:8px;padding:.45rem .9rem;font:500 .82rem Inter,system-ui,sans-serif;cursor:pointer;margin:0 .4rem .4rem 0}.gh:hover,.gh.on{border-color:var(--ac);color:var(--ac)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.q{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:1rem;margin-bottom:.7rem}.qn{font-size:11px;color:var(--mu);font-weight:600;margin-bottom:.3rem}.qt{font-weight:500;margin-bottom:.7rem}
+.op{display:block;width:100%;text-align:left;background:var(--s2);border:1px solid var(--bd);color:var(--tx);padding:.55rem .85rem;border-radius:7px;cursor:pointer;font:inherit;font-size:.86rem;margin-bottom:.4rem}.op:hover:not(:disabled){border-color:var(--ac)}.op.ok{background:var(--okb);border-color:var(--gr)}.op.ko{background:var(--kob);border-color:var(--rd)}
+.row{display:flex;gap:.5rem;flex-wrap:wrap}.in{flex:1;min-width:130px;background:var(--s2);border:1px solid var(--bd);color:var(--tx);border-radius:7px;padding:.5rem .7rem;font:inherit;font-size:.86rem}
+.fb{display:none;margin-top:.5rem;padding:.5rem .8rem;border-radius:6px;font-size:.84rem}.fb.ok{display:block;background:var(--okb)}.fb.ko{display:block;background:var(--kob)}
+.fx{display:none;text-align:center;background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:1.5rem;margin-top:1rem}.fx b{display:block;font:700 2.4rem 'Space Grotesk',system-ui,sans-serif}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style></head><body>
+<nav id="nv" aria-label="Secciones"></nav>
+<header class="hero"><h1>UD3. Chasis y placa base</h1><p>Montaje y Mantenimiento de Equipos · 1º SMR. Apuntes de repaso paso a paso y un test de examen con corrección: chasis, placa base, documentación y BIOS/UEFI.</p></header>
+<main class="c" id="app"></main>
+<script>
+const $=s=>document.querySelector(s),pk=a=>a[Math.floor(Math.random()*a.length)],sh=a=>[...a].sort(()=>Math.random()-.5),
+L=a=>'<ul class="ll">'+a.map(x=>'<li>'+x+'</li>').join('')+'</ul>',
+T=(h,r)=>'<div class="tw"><table class="tbl"><tr>'+h.map(x=>'<th>'+x+'</th>').join('')+'</tr>'+r.map(w=>'<tr>'+w.map(x=>'<td>'+x+'</td>').join('')+'</tr>').join('')+'</table></div>',
+D=x=>'<div class="def">'+x+'</div>',W=x=>'<div class="warn"><b>Recuerda.</b> '+x+'</div>';
+const N=['El chasis','La placa base','Documentación','BIOS y UEFI','Vocabulario'];
+const S=[
+["El chasis",[
+["Para qué sirve",D('El chasis o caja no es solo una carcasa: cumple <b>cinco funciones</b>.')+L(['<b>Sujeta</b> los componentes: placa, fuente, discos y tarjetas.','<b>Protege</b> del polvo, de los golpes y de las interferencias electromagnéticas (la chapa metálica hace de pantalla).','<b>Conduce el aire</b> para refrigerar.','Permite <b>ordenar el cableado</b>.','Da <b>acceso al usuario</b>: botón de encendido, USB y audio del panel frontal.'])],
+["Tipos de chasis",T(['Tipo','Placa típica','Uso habitual'],[['Torre completa (full tower)','E-ATX','Estaciones de trabajo, mucho almacenamiento'],['Semitorre (midi tower)','ATX','El más común: casa, juegos, uso general'],['Minitorre','micro-ATX','Oficina, equipos económicos'],['Formato pequeño (SFF)','mini-ITX','Poco espacio, equipos discretos'],['Rack','Placas de servidor','Servidores en armario. Altura en U (1U = 44,45 mm)']])],
+["Compatibilidad con la placa base",D('El tamaño del chasis lo decide sobre todo el <b>formato de placa</b> que admite. Los agujeros de las placas pequeñas coinciden con parte de los de las grandes, por eso una micro-ATX se atornilla en un chasis ATX.')+W('un chasis admite placas de su formato y de los <b>más pequeños</b>, nunca de uno mayor. Una mini-ITX cabe en una semitorre; una ATX no cabe en una minitorre.')],
+["Bahías y ranuras de expansión",L(['<b>3,5"</b>: discos duros mecánicos.','<b>2,5"</b>: SSD SATA.','<b>5,25"</b>: unidades ópticas. Casi han desaparecido.','<b>SSD M.2</b>: no necesitan bahía, van atornillados a la placa.','<b>Ranuras de expansión</b>: chapas traseras por donde salen los conectores de las tarjetas. Una gráfica actual ocupa 2 o 3.'])],
+["La fuente de alimentación",L(['En los chasis actuales va <b>abajo</b>, a menudo tapada por una cubierta. En los antiguos iba arriba.','Dos formatos: <b>ATX</b> (estándar) y <b>SFX</b> (más pequeño y más caro, para chasis compactos).','La ficha del chasis indica el formato que admite y la <b>longitud máxima</b> de la fuente.'])],
+["Refrigeración y flujo de aire",L(['El aire frío <b>entra por el frontal</b> (y a veces por abajo); el caliente <b>sale por detrás y por arriba</b>, porque el aire caliente sube.','Ventiladores habituales: <b>120 y 140 mm</b>. Los radiadores de refrigeración líquida se nombran por su largo: <b>240, 280 o 360 mm</b> (uno de 360 lleva tres ventiladores de 120).','Si entra más aire del que sale hay <b>presión positiva</b>. Con filtros en las entradas, entra menos polvo por las rendijas.'])],
+["Holguras (clearance)",D('Las <b>holguras</b> son el espacio máximo que hay dentro del chasis para cada componente. Las tres que siempre hay que mirar en la ficha:')+L(['Largo máximo de la <b>tarjeta gráfica</b>.','Altura máxima del <b>disipador del procesador</b>.','Largo máximo de la <b>fuente</b>.'])+W('una gráfica de 34 cm no cabe en un chasis que admite 33 cm, aunque sea por un centímetro.')],
+["Cómo se elige un chasis",D('Se elige por <b>lo que tiene que caber dentro</b> y por <b>dónde va a estar el equipo</b>, no por su aspecto.')+L(['Formato de placa que admite.','Holguras para gráfica, disipador y fuente.','Bahías para los discos previstos.','Refrigeración y ruido.','Espacio disponible donde irá el equipo.','Margen para ampliar en el futuro.','Precio.'])+'<p style="font-size:.86rem"><b>Materiales:</b> acero (resistente y pesado), aluminio (ligero y más caro), plástico en los frontales, cristal templado o metacrilato en los laterales. El panel frontal suele llevar USB, audio y botones de encendido y reinicio.</p>']
+]],
+["La placa base",[
+["Formatos",T(['Formato','Medidas','Chasis típico','Observaciones'],[['E-ATX','Mayor que ATX','Torre completa','Estaciones de trabajo'],['ATX','30,5 × 24,4 cm','Semitorre','El más común'],['micro-ATX','24,4 × 24,4 cm','Minitorre','Menos ranuras de expansión'],['mini-ITX','17 × 17 cm','Formato pequeño','Normalmente 2 ranuras de memoria y 1 de expansión']])],
+["Elementos (1–7)",T(['Elemento','Cómo se reconoce','Para qué sirve'],[['<b>Zócalo de la CPU</b>','Cuadrado grande arriba, hacia el centro','Aloja el procesador. Cada zócalo admite una familia concreta (AM5 en AMD, LGA1700 en Intel)'],['<b>VRM</b>','Disipadores que rodean el zócalo por arriba y por la izquierda','Bajan la tensión de la fuente a la que usa el procesador'],['<b>Ranuras DIMM</b>','Largas y finas, en paralelo, a la derecha del zócalo','Memoria RAM. Por parejas para doble canal'],['<b>PCIe x16</b>','Ranura larga, la más cercana al procesador','Tarjeta gráfica'],['<b>PCIe x1</b>','Ranura muy corta','Tarjetas pequeñas: red, wifi, sonido'],['<b>Ranura M.2</b>','Pequeña, con un tornillo al otro extremo','SSD M.2 sin cables. Los más rápidos usan NVMe'],['<b>Chipset</b>','Disipador plano, abajo a la derecha','Conecta el procesador con discos, USB y ranuras secundarias']])],
+["Elementos (8–13)",T(['Elemento','Cómo se reconoce','Para qué sirve'],[['<b>Conectores SATA</b>','Pequeños, apilados en el borde derecho','Cable de datos de discos SATA y unidades ópticas'],['<b>Conector de 24 pines</b>','Grande y alargado, borde derecho','Alimentación principal de la placa'],['<b>EPS de 8 pines</b>','Arriba a la izquierda, junto al panel trasero','Alimentación del procesador'],['<b>Cabecera del panel frontal</b>','Hilera de pines pequeños, borde de abajo','Encendido, reinicio y luces del chasis'],['<b>Panel trasero de E/S</b>','Bloque en el borde izquierdo','USB, red, audio y vídeo'],['<b>Pila</b>','Pila de botón redonda','Mantiene la BIOS y el reloj con el equipo desenchufado']])+'<p style="font-size:.86rem">Además hay cabeceras USB internas, donde se conectan los USB del frontal del chasis.</p>'+W('dos conectores llevan corriente de la fuente a la placa: el de <b>24 pines</b> (toda la placa) y el <b>EPS de 8 pines</b> (el procesador). Dos elementos suelen llevar disipador: el <b>VRM</b> (rodea el zócalo) y el <b>chipset</b> (solo, abajo).')]
+]],
+["Identificar la placa y su documentación",[
+["Sin abrir el equipo",D('Un técnico identifica la placa <b>antes de abrir</b>: ahorra tiempo y no rompe los precintos de garantía.')+L(['<b>msinfo32</b> (Windows + R): «Fabricante de la placa base», «Producto de la placa base» y «Versión y fecha de BIOS».','<b>PowerShell</b>: el comando de abajo muestra fabricante y modelo.'])+'<pre class="ex">Get-CimInstance Win32_BaseBoard</pre>'+W('comprueba el modelo letra a letra: una B760M y una B760 son placas distintas.')],
+["Página de soporte del fabricante",T(['Qué se busca','Para qué sirve'],[['Manual en PDF','Esquema de la placa, contenido de la caja e instrucciones'],['<b>QVL</b> (Memory support list)','Módulos de memoria que el fabricante ha probado con esa placa'],['Lista de procesadores compatibles (CPU support list)','Qué procesadores admite y desde qué versión de BIOS'],['BIOS','Últimas versiones del firmware'],['Controladores (drivers)','Chipset, red, audio…'],['Utilidades','Programas del fabricante: actualizar BIOS, controlar ventiladores…']])],
+["Equipos de marca",D('En HP, Dell, Lenovo… la placa suele tener un código interno que no lleva a ningún manual. La documentación se busca <b>por el ordenador</b>.')+L(['«Modelo del sistema» de msinfo32.','Etiqueta de servicio o número de serie de la pegatina del equipo.','En lugar del manual suele haber una <b>guía de servicio</b>.'])],
+["Qué acompaña a cada componente",D('La fuente más fiable es el manual, en la página del <b>contenido de la caja</b> (<i>package contents</i>).')+T(['Viene con…','Elementos habituales'],[['La placa base','Manual, cables SATA, tornillo para el M.2, protector de E/S (chapa del hueco trasero, si no va integrado)'],['La fuente','Cable de 24 pines, cable EPS, cables para gráfica y discos, cable de corriente'],['El chasis','Separadores para la placa (a menudo ya puestos), tornillos, bridas']])+W('tras instalar el sistema operativo se descargan los controladores del fabricante. Primero <b>chipset y red</b>: sin controlador de red no hay internet para bajar los demás.')]
+]],
+["La BIOS y la UEFI",[
+["Qué es el firmware",D('Es el programa grabado en un chip de la placa que se ejecuta <b>antes que el sistema operativo</b>: comprueba el hardware, lo prepara y le pasa el control. A la UEFI se la sigue llamando «la BIOS».')+T(['','BIOS','UEFI'],[['Edad','La original, años 80','Su sustituta, la actual'],['Aspecto','Texto, solo teclado','Gráfico, admite ratón'],['Discos','Arranca de discos de hasta 2 TB','Discos mucho mayores'],['Seguridad','Sin arranque seguro','Con Secure Boot']])],
+["POST, CMOS y pila",L(['<b>POST</b> (autoprueba de encendido): lo primero que hace el firmware. Comprueba procesador, memoria y gráfica. Si falla, avisa con <b>pitidos o luces</b> porque aún no hay imagen; el manual explica cada código.','La configuración se guarda en la memoria <b>CMOS</b>, que mantiene la <b>pila</b>.','Pila agotada: el equipo <b>pierde fecha y hora</b> al desenchufarse.','Quitar la pila unos minutos con el equipo desenchufado devuelve la configuración a la de fábrica.'])],
+["Cómo se entra",L(['Al encender: <b>Supr</b> o <b>F2</b> en la mayoría; <b>F1</b> en muchos Lenovo de sobremesa. Lo dice el manual.','<b>F12</b> (o F11, F8 según marca): <b>menú de arranque</b>, para elegir dispositivo solo esa vez sin cambiar la configuración.','Desde Windows: Configuración → Sistema → Recuperación → Inicio avanzado → Reiniciar ahora → Solucionar problemas → Opciones avanzadas → Configuración del firmware UEFI.'])],
+["Qué se configura",T(['Opción','En inglés','Para qué sirve'],[['Fecha y hora','Date, Time','Reloj del sistema'],['Orden de arranque','Boot order / priority','Qué dispositivo arranca primero: disco, USB, red'],['Arranque seguro','Secure Boot','Solo deja arrancar sistemas firmados. Frena virus de arranque'],['TPM','TPM, Intel PTT, AMD fTPM','Chip que guarda claves de cifrado. PTT y fTPM son el TPM integrado en la CPU'],['Virtualización','VT-x, SVM','Necesaria para máquinas virtuales'],['Perfil de memoria','XMP, EXPO','Pone la RAM a la velocidad anunciada'],['Ventiladores','Fan control','Velocidad según temperatura'],['Contraseña','Administrator / Supervisor','Impide que otros cambien la configuración'],['Valores por defecto','Load (optimal) defaults','Deshace los cambios. Lo primero que se prueba si algo va mal'],['Guardar y salir','Save and exit (F10)','Sin guardar no se aplica nada'],['Encendido por red','Wake on LAN','Enciende el equipo desde la red']])+W('Windows 11 exige <b>UEFI, arranque seguro y TPM 2.0</b>. En msinfo32, «Modo de BIOS» y «Estado de arranque seguro» lo muestran.')],
+["Actualizar el firmware",L(['Se actualiza para admitir <b>procesadores nuevos</b>, corregir fallos o cerrar agujeros de seguridad. Si el procesador necesita una BIOS más nueva que la instalada, el equipo puede no arrancar.','Operación <b>delicada</b>: si se va la luz a mitad, la placa puede quedar inservible. Algunas tienen BIOS de reserva o botón de recuperación.','Regla general: si el equipo funciona bien y no hace falta, <b>no se actualiza</b>.'])]
+]],
+["Vocabulario en inglés",[
+["Términos que más vas a encontrar",T(['Inglés','Español','Inglés','Español'],[['Case','Chasis, caja','Socket','Zócalo'],['Clearance','Holgura','Slot','Ranura'],['Drive bay','Bahía','Header','Cabecera (pines)'],['Expansion slot','Ranura de expansión','Rear I/O','Panel trasero de E/S'],['Airflow','Flujo de aire','Package contents','Contenido de la caja'],['Fan / Radiator','Ventilador / Radiador','Support list','Lista de compatibilidad'],['Power supply (PSU)','Fuente de alimentación','Drivers','Controladores'],['Motherboard','Placa base','Boot','Arranque']])]
+]]
+];
+const MC=[
+['¿Cabe una placa ATX en un chasis minitorre?',['No, es mayor que micro-ATX','Sí, siempre','Solo con adaptador','Solo si es de aluminio'],0,'La minitorre admite micro-ATX y menores; un chasis nunca admite un formato mayor.'],
+['¿Qué placa cabe en una semitorre ATX?',['E-ATX','Mini-ITX','Ninguna menor que ATX','Solo ATX'],1,'Un chasis admite su formato y los más pequeños: mini-ITX sí cabe.'],
+['¿Cuál NO es una de las tres holguras a mirar en la ficha del chasis?',['Largo de la gráfica','Altura del disipador de CPU','Largo de la fuente','Número de ranuras DIMM'],3,'Las holguras son gráfica, disipador y fuente. Las DIMM son de la placa.'],
+['¿Cómo circula el aire en un chasis bien refrigerado?',['Entra por atrás y sale por el frontal','Entra por el frontal y sale por detrás y arriba','Entra por arriba y sale por abajo','Todo el aire entra y sale por la fuente'],1,'Frío por el frontal (y abajo); caliente por detrás y arriba, porque sube.'],
+['¿Qué conector alimenta el procesador?',['24 pines','EPS de 8 pines','SATA','Cabecera USB'],1,'El EPS de 8 pines alimenta la CPU; el de 24 pines, el resto de la placa.'],
+['¿Qué elemento decide qué procesadores puedes montar?',['El chipset de la gráfica','El zócalo','La pila','El panel trasero'],1,'Cada zócalo (AM5, LGA1700…) admite una familia concreta de procesadores.'],
+['¿Qué elementos de la placa suelen llevar disipador?',['Pila y SATA','VRM y chipset','PCIe y DIMM','EPS y panel frontal'],1,'El VRM rodea el zócalo y el chipset está solo abajo.'],
+['¿Cómo averiguas el modelo de la placa en Windows sin abrir el equipo?',['Con msinfo32','Con el Administrador de tareas','Con el Bloc de notas','Mirando la fuente'],0,'msinfo32 (o Get-CimInstance Win32_BaseBoard) da fabricante y modelo.'],
+['¿Qué es la QVL?',['Lista de módulos de memoria probados con la placa','Lista de procesadores compatibles','Un tipo de zócalo','Un código de pitidos'],0,'Está en la página de soporte de la placa. No confundir con la CPU support list.'],
+['Un ordenador pierde fecha y hora cada vez que se desenchufa. ¿Qué le pasa?',['Pila de la placa agotada','Fuente defectuosa','Falta el controlador de red','Secure Boot activado'],0,'La pila mantiene la CMOS con el equipo desenchufado.'],
+['Para instalar Windows desde USB, ¿qué cambias en la UEFI?',['El orden de arranque','El perfil XMP','El control de ventiladores','La contraseña'],0,'También vale el menú de arranque (F12…) para elegir el USB solo esa vez.'],
+['¿Qué tres cosas exige Windows 11 relacionadas con la placa?',['UEFI, Secure Boot y TPM 2.0','BIOS, XMP y TPM 1.0','UEFI, Wake on LAN y XMP','BIOS clásica, Secure Boot y VT-x'],0,'Arranque en modo UEFI, arranque seguro y TPM 2.0.'],
+['En un ordenador de marca no encuentras manual para la placa. ¿Qué haces?',['Buscar por el modelo del equipo o la etiqueta de servicio','Probar manuales de otras marcas','Abrir el equipo y leer el chip','Dejarlo estar'],0,'La documentación se busca por el ordenador; en lugar del manual suele haber una guía de servicio.'],
+['¿Qué controlador conviene instalar primero tras instalar el sistema operativo?',['Audio y gráfica','Chipset y red','Impresora','Wifi del móvil'],1,'Sin controlador de red no hay internet para descargar los demás.'],
+['¿Para qué sirve XMP o EXPO?',['Poner la RAM a la velocidad que anuncia su fabricante','Activar la virtualización','Guardar claves de cifrado','Encender el equipo por red'],0,'Son perfiles de memoria.'],
+['¿Qué hace el POST?',['Autoprueba de CPU, memoria y gráfica al encender','Instala drivers','Actualiza la BIOS','Cifra el disco'],0,'Si algo falla avisa con pitidos o luces; el manual explica los códigos.']
+];
+const TF=[
+['Una gráfica de 34 cm cabe en un chasis que admite 33 cm.',false,'No cabe, aunque sea por un centímetro.'],
+['Una mini-ITX se puede atornillar en una semitorre ATX.',true,'Un chasis admite su formato y los más pequeños.'],
+['Los SSD M.2 necesitan una bahía de 2,5".',false,'Van atornillados directamente a la placa.'],
+['En los chasis actuales la fuente suele ir abajo.',true,'En los antiguos iba arriba.'],
+['Un radiador de 360 mm lleva tres ventiladores de 120 mm.',true,'Los radiadores se nombran por su largo.'],
+['El conector de 24 pines alimenta solo el procesador.',false,'Alimenta toda la placa; el procesador lo alimenta el EPS de 8 pines.'],
+['Una B760M y una B760 son la misma placa.',false,'Hay que comprobar el modelo letra a letra.'],
+['En un chasis rack, la altura se mide en U.',true,'1U = 44,45 mm.'],
+['La UEFI admite ratón y arranque seguro; la BIOS original no.',true,'La BIOS es solo texto y sin Secure Boot.'],
+['Si el equipo funciona bien, conviene actualizar siempre la BIOS.',false,'Si funciona bien y no hace falta, no se actualiza.'],
+['F12 abre el menú de arranque para elegir dispositivo solo esa vez.',true,'No cambia la configuración guardada.'],
+['Quitar la pila con el equipo desenchufado restablece la configuración de fábrica.',true,'Se borra la CMOS.'],
+['PTT y fTPM son el TPM integrado en el procesador.',true,'Intel PTT y AMD fTPM.'],
+['Con más aire entrando que saliendo hay presión negativa.',false,'Es presión positiva; con filtros entra menos polvo.']
+];
+const FI=[
+['El chasis que más se usa en casa y para juegos es la ___ (ATX).',['semitorre','semi torre','midi tower'],'Semitorre, con placa ATX.'],
+['Las ___ son el espacio máximo del chasis para cada componente (en inglés, clearance).',['holguras','holgura'],'Holguras.'],
+['La placa mini-ITX mide ___ × 17 cm.',['17'],'17 × 17 cm.'],
+['El conector de ___ pines (EPS) alimenta el procesador.',['8','ocho'],'EPS de 8 pines.'],
+['Los chips o disipadores que bajan la tensión de la fuente a la que usa la CPU se llaman ___.',['vrm'],'VRM.'],
+['El comando de PowerShell Get-CimInstance Win32____ muestra fabricante y modelo de la placa.',['baseboard'],'Win32_BaseBoard.'],
+['La memoria pequeña que guarda la configuración de la BIOS se llama ___.',['cmos'],'CMOS, mantenida por la pila.'],
+['Windows 11 exige UEFI, arranque seguro y ___ 2.0.',['tpm'],'TPM 2.0.']
+];
+let h='';
+S.forEach((s,i)=>{h+='<h2 class="st" id="s'+i+'"><span class="n">'+(i+1)+'</span>'+s[0]+'</h2>'+s[1].map((c,j)=>'<div class="cd"><button class="ch" aria-expanded="'+(j==0)+'" onclick="tog(this)"><span>'+c[0]+'</span><i>▶</i></button><div class="cb'+(j==0?' on':'')+'">'+c[1]+'</div></div>').join('')});
+h+='<h2 class="st" id="test"><span class="n">★</span>Test de examen</h2><p class="mu" style="margin-bottom:.8rem">Cada pregunta te explica la respuesta. Las preguntas y el orden de las opciones cambian cada vez.</p><div id="modes">'+[['all','Mezcla'],['mc','Test'],['tf','V / F'],['fi','Rellenar']].map(m=>'<button class="gh" data-m="'+m[0]+'" onclick="modo(\''+m[0]+'\')">'+m[1]+'</button>').join('')+'</div><div class="row" style="justify-content:space-between;align-items:center;margin:.5rem 0 1rem"><div><div class="bar"><div id="pb"></div></div><div class="mu" id="pl"></div></div><div><button class="gh" onclick="ini(false)">↺ Repetir</button><button class="btn" onclick="ini(true)">Preguntas nuevas</button></div></div><div id="qc"></div><div class="fx" id="fx"><span class="mu">Resultado final</span><b id="fn"></b><p id="fm" class="mu" style="margin:.5rem 0 1rem"></p><button class="btn" onclick="ini(true)">Preguntas nuevas</button></div>';
+$('#app').innerHTML=h;
+$('#nv').innerHTML=N.map((t,i)=>'<a href="#s'+i+'">'+(i+1)+'. '+t+'</a>').join('')+'<a href="#test">★ Test</a>';
+let QS=[],done=0,ok=0,mode='all';
+const CNT={all:{mc:8,tf:5,fi:4},mc:{mc:12},tf:{tf:12},fi:{fi:6}},
+nb=s=>String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f\s]/g,'');
+function build(){const c=CNT[mode],a=[];
+if(c.mc)a.push(...sh(MC).slice(0,c.mc).map(x=>{const p=sh(x[1].map((t,i)=>[t,i==x[2]]));return{t:'mc',q:x[0],o:p.map(y=>y[0]),a:p.findIndex(y=>y[1]),e:x[3]}}));
+if(c.tf)a.push(...sh(TF).slice(0,c.tf).map(x=>({t:'tf',q:x[0],a:x[1],e:x[2]})));
+if(c.fi)a.push(...sh(FI).slice(0,c.fi).map(x=>({t:'fill',q:x[0],a:x[1],e:x[2]})));
+return mode=='all'?sh(a):a}
+function card(q,n){let b='';
+if(q.t=='mc')b=q.o.map((o,i)=>'<button class="op" data-q="'+n+'" onclick="mcP('+n+','+i+',this)">'+o+'</button>').join('');
+else if(q.t=='tf')b=['Verdadero','Falso'].map((o,i)=>'<button class="op" data-q="'+n+'" onclick="tfP('+n+','+(i==0)+',this)">'+o+'</button>').join('');
+else b='<div class="row"><input class="in" id="in'+n+'" placeholder="Tu respuesta" autocomplete="off" aria-label="Tu respuesta" onkeydown="if(event.key===\'Enter\')chk('+n+')"><button class="btn" onclick="chk('+n+')">Comprobar</button></div>';
+return '<div class="q"><div class="qn">Pregunta '+(n+1)+' de '+QS.length+'</div><div class="qt">'+q.q+'</div>'+b+'<div class="fb" id="fb'+n+'" role="status"></div></div>'}
+function res(n,g,m){const q=QS[n];if(q.d)return;q.d=1;done++;if(g)ok++;const f=$('#fb'+n);f.className='fb '+(g?'ok':'ko');f.textContent=(g?'✅ Correcto. ':'❌ Incorrecto. ')+m;up();
+if(done==QS.length){const t=(ok/QS.length*10).toFixed(1);$('#fn').textContent=t+' / 10';$('#fm').textContent=ok+' de '+QS.length+' correctas. '+(t>=9?'Listo para el examen.':t>=5?'Aprobado: repasa los fallos.':'Repasa los apuntes y vuelve a intentarlo.');$('#fx').style.display='block'}}
+function mcP(n,i,b){const q=QS[n];if(q.d)return;document.querySelectorAll('[data-q="'+n+'"]').forEach((x,k)=>{x.disabled=true;if(k==q.a)x.classList.add('ok')});if(i!=q.a)b.classList.add('ko');res(n,i==q.a,q.e)}
+function tfP(n,v,b){const q=QS[n];if(q.d)return;document.querySelectorAll('[data-q="'+n+'"]').forEach((x,k)=>{x.disabled=true;if((k==0)==q.a)x.classList.add('ok')});if(v!==q.a)b.classList.add('ko');res(n,v===q.a,q.e)}
+function chk(n){const q=QS[n],i=$('#in'+n);if(q.d)return;i.disabled=true;const g=q.a.some(a=>nb(a)==nb(i.value));res(n,g,(g?'':'Respuesta: '+q.a[0]+'. ')+q.e)}
+function up(){$('#pb').style.width=(QS.length?done/QS.length*100:0)+'%';$('#pl').textContent=done+' / '+QS.length+' respondidas · '+ok+' correctas'}
+function ini(nw){if(nw||!QS.length)QS=build();QS.forEach(q=>q.d=0);done=0;ok=0;$('#fx').style.display='none';$('#qc').innerHTML=QS.map(card).join('');up()}
+function modo(m){mode=m;document.querySelectorAll('#modes button').forEach(b=>b.classList.toggle('on',b.dataset.m==m));ini(true)}
+function tog(b){b.setAttribute('aria-expanded',b.nextElementSibling.classList.toggle('on'))}
+modo('all');
+</script></body></html>
